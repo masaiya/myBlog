@@ -14,83 +14,26 @@
     min-height: 100%;
     background-color: rgb(235,229,229);
   }
-  header {
-    background-color: rgb(68,68,68);
+  
+  .publish {
+    margin: 10px 0;
     height: 50px;
-  }
-  .navbar {
+    width: 100%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    width: 80%;
-    margin: 0 auto;
-    padding: 0;
+    justify-content: center;
   }
-  .navbar-left {
-    display:flex; 
-    justify-content: space-between;
-    align-items: center;
-  }
-  .search {
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    background-color: #888;
-    padding-left: 15px;
-    transition: all .3s;
-    height: 26px;
-  } 
-  .navbar-right ul li{
-    display: inline-block;
-    list-style: none;
-  }
-  .navbar-list a {
-    padding: 10px 15px;
-    color: #ccc;
-    font-size: 14px;
-    text-decoration: none;
-    line-height: 50px;
-  }
-  .navbar-list a:hover {
-    color: #fff;
-    text-decoration: underline;
-  }
-  .logo {
-    width: 120px;
-    height: 28px;
-    margin: 0 10px;
-  }
-  .footer {
+  .publish a {
+    line-height: 30px;
     background-color: rgb(68,68,68);
-    height: 80px;
-    display: flex;
-    justify-content: space-around;
-  }
-  .footer-left {
     color: #ccc;
-    line-height: 80px;
-  }
-  .footer-left img {
-    width: 200px;
-  }
-  .footer-right {
-    list-style: none;
-    display: flex;
-    line-height: 80px;
-  }
-  .footer-right li {
-    padding: 0 10px;
-    color: #ccc;
-    cursor: pointer;
-  }
-  .footer-right li:hover {
-    color: #fff;
-    text-decoration: underline;
+    padding: 10px 10px;
+    border-radius: 10px;
   }
   .main {
-    height: calc(100vh - 130px);
+    margin: auto auto;
+    width: 80%;
+    background-color: rgb(245, 240, 240);
+    height: calc(100vh - 210px);
   }
   .media {
     height: 75px;
@@ -114,6 +57,9 @@
 </style>
 {{/block}}
 {{block 'content'}}
+<div class="publish">
+  <a href="/publish">创建话题</a>
+</div>
 <div class="main">
   <ul class="container">
     <li class="media">

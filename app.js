@@ -29,8 +29,23 @@ app.use(session({
   // 无论你是否使用Session，都会默认给客户端分配一个Cookie钥匙
   saveUninitialized: true
 }))
-
+// 把路由挂载到 app 中
 app.use(router);
+
+// 配置一个处理404的中间件
+app.use(function(req, res) {
+  res.render('404.html');
+})
+
+// 当在别的中间件出现错误时，调用 next(err) 将直接往后找到带有四个参数的应用程序级别的中间件
+// 配置一个全局错误处理中间件
+app.use(function(err, req, res, next) {
+  res.status(500).join({
+    err_code: 500,
+    message: err.message
+  })
+})
+
 //监听端口
 app.listen(3000,function(){
 console.log('Server is running...');

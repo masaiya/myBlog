@@ -4,17 +4,17 @@ var md5 = require('blueimp-md5')
 
 var router = express.Router()
 
-router.get('/', function (req, res) {
+router.get('/', function (req, res, next) {
   res.render('index.html', {
     user: req.session.user
   })
 })
 
-router.get('/login', function (req, res) {
+router.get('/login', function (req, res, next) {
   res.render('login.html')
 })
 
-router.post('/login', async function (req, res) {
+router.post('/login', async function (req, res, next) {
   // 1. 获取表单数据
   // 2. 查询数据库用户名密码是否正确
   // 3. 发送响应数据
@@ -36,18 +36,15 @@ router.post('/login', async function (req, res) {
       message: 'OK'
     })
   } catch(err) {
-    return res.status(500).json({
-      err_code: 500,
-      message: '服务器繁忙，请稍后再试！'
-    });
+    next(err)
   }
 })
 
-router.get('/register', function (req, res) {
+router.get('/register', function (req, res, next) {
   res.render('register.html')
 })
 
-router.post('/register', async function (req, res) {
+router.post('/register', async function (req, res, next) {
   // 1. 获取表单提交的数据
   //    req.body
   // 2. 操作数据库
@@ -73,10 +70,7 @@ router.post('/register', async function (req, res) {
       message: 'OK'
     })
   } catch(err) {
-    return res.status(500).json({
-      err_code: 500,
-      message: '服务器繁忙，请稍后再试！'
-    });
+    next(err)
   }
   // 服务端重定向只对同步请求有效，对异步请求无效
 })
@@ -86,6 +80,10 @@ router.get('/logout', function (req, res) {
   req.session.user = null;
   // 重定向到登录页
   res.redirect('/login');
+})
+
+router.get('/publish', function(req, res, next) {
+  res.render('publish.html')
 })
 
 module.exports = router;

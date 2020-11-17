@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .errPage {
+      width: 300px;
+      height: 500px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -150px;
+      margin-top: -250px;
+    }
+    .link {
+      display: flex;
+      justify-content: center;
+    }
+    .link a{
+      text-decoration: none;
+      background-color: rgb(68,68,68);
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="errPage">
+    <img src="/public/img/404.png" alt="">
+    <p>啊哦~现在访问的人数太多，请稍后重试~</p>
+    <div class="link">
+      <a href="/">回到首页</a>
+    </div>
+  </div>
+</body>
+</html>

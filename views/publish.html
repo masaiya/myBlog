@@ -1,0 +1,81 @@
+{{extend './layout.html'}}
+
+{{block 'head'}}
+<style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      background-color: rgb(235, 229, 229);
+    }
+    main {
+      padding: 20px 30px;
+      margin: auto auto;
+      width: 80%;
+      background-color: rgb(245, 240, 240);
+      height: calc(100vh - 210px);
+    }
+    .subBtn {
+      margin: 0 auto;
+      width: 30%;
+      display: flex;
+      justify-content: space-around;
+    }
+</style>
+{{/block}}
+
+{{block 'content'}}
+
+<main>
+  
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">话题</label>
+      <input type="text" class="form-control" placeholder="输入话题..." name="topic"> 
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">内容</label>
+      <textarea class="form-control" name="content" placeholder="输入描述..." rows="15"></textarea>
+    </div>
+    <div class="input-group subBtn">
+      <button type="submit" class="btn btn-success" id="submit">发表</button>
+      <a class="btn btn-info" role="button" id="cancel" href="/">回到首页</a>
+    </div>
+  </form>
+</main>
+
+{{/block}}
+
+{{block 'script'}}
+<script>
+    $(function () {
+        $('.userInfo').on('click', function () {
+            $('.userCount').toggle()
+        })
+        $('#publish_form').on('submit', function (e) {
+            e.preventDefault()
+            let formData = $(this).serialize()
+            formData += `&nickname=${$('.userInfo').text().replace(/\s+/g, '')}`
+            $.ajax({
+                type: 'POST',
+                url: '/publish',
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                    if (data.code === 0) {
+                        window.alert('发布成功,即将跳转')
+                        window.location.href = '/'
+                    } else {
+                        window.alert('发送失败，请重试')
+                    }
+                }
+            })
+        })
+    })
+</script>
+{{/block}}
