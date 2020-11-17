@@ -1,4 +1,162 @@
-{{extend './public/public.html'}}
+{{extend './layout.html'}}
+{{block 'head'}}
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background-color: rgb(235,229,229);
+  }
+  header {
+    background-color: rgb(68,68,68);
+    height: 50px;
+  }
+  .navbar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .navbar-left {
+    display:flex; 
+    justify-content: space-between;
+    align-items: center;
+  }
+  .search {
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #888;
+    padding-left: 15px;
+    transition: all .3s;
+    height: 26px;
+  } 
+  .navbar-right ul li{
+    display: inline-block;
+    list-style: none;
+  }
+  .navbar-list a {
+    padding: 10px 15px;
+    color: #ccc;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 50px;
+  }
+  .navbar-list a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .logo {
+    width: 120px;
+    height: 28px;
+    margin: 0 10px;
+  }
+  .footer {
+    background-color: rgb(68,68,68);
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .footer-left {
+    color: #ccc;
+    line-height: 80px;
+  }
+  .footer-left img {
+    width: 200px;
+  }
+  .footer-right {
+    list-style: none;
+    display: flex;
+    line-height: 80px;
+  }
+  .footer-right li {
+    padding: 0 10px;
+    color: #ccc;
+    cursor: pointer;
+  }
+  .footer-right li:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .main {
+    height: calc(100vh - 130px);
+  }
+  .media {
+    height: 75px;
+    margin: 5px 0;
+  }
+  .media-left {
+    line-height: 75px;
+    margin-right: 10px;
+  }
+  .media-body {
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .userName {
+    color: #ccc;
+    font-size: 14px;
+    padding-right: 10px;
+  }
+</style>
+{{/block}}
 {{block 'content'}}
-<h1>index</h1>
+<div class="main">
+  <ul class="container">
+    <li class="media">
+      <div class="media-left">
+        <a href="#">
+            <img width="40" height="40" class="media-object" src="/public/img/avatar-max-img.png" alt="...">
+          </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="/topics/123">Topic Information</a></h4>
+        <p>masy 回复了问题 • 2 人关注 • 1 个回复 • 187 次浏览 • 2020-11-17 10:54</p>
+      </div>
+    </li>
+    <li class="media">
+      <div class="media-left">
+        <a href="#">
+            <img width="40" height="40" class="media-object" src="/public/img/avatar-max-img.png" alt="...">
+          </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="/topics/123">Topic Information</a></h4>
+        <p>masy 回复了问题 • 2 人关注 • 1 个回复 • 187 次浏览 • 2020-11-17 10:54</p>
+      </div>
+    </li>
+    <li class="media">
+      <div class="media-left">
+        <a href="#">
+            <img width="40" height="40" class="media-object" src="/public/img/avatar-max-img.png" alt="...">
+          </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="/topics/123">Topic Information</a></h4>
+        <p>masy 回复了问题 • 2 人关注 • 1 个回复 • 187 次浏览 • 2020-11-17 10:54</p>
+      </div>
+    </li>
+  </ul>
+</div>
+{{/block}}
+
+{{block 'script'}}
+<script>
+  $('#mydropdown').click(function() {
+    $('#mydropdown').show();
+  })
+</script>
 {{/block}}

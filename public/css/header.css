@@ -1,0 +1,27 @@
+.navbar .container {
+  flex-direction: row;
+}
+.navbar-header {
+  flex-basis: 200px;
+}
+.navbar-collapse {
+  flex: 1;
+}
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+}
+.dropdown {
+  flex-basis: 200px;
+  position: absolute;
+}
+.navbar-right li {
+  flex: 1;
+}
+.dropdown-menu {
+  position: relative;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
