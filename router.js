@@ -6,10 +6,18 @@ const { ready } = require('jquery')
 
 var router = express.Router()
 
-router.get('/', function (req, res, next) {
-  res.render('index.html', {
-    user: req.session.user
-  })
+router.get('/', async function (req, res, next) {
+  try {
+    var topics = await Topic.find();
+    console.log("topics:::");
+    console.log(topics);
+    res.render('index.html', {
+      user: req.session.user,
+      topics: topics
+    })
+  } catch(err) {
+    next(err);
+  }
 })
 
 router.get('/login', function (req, res, next) {

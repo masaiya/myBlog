@@ -14,30 +14,15 @@
     min-height: 100%;
     background-color: rgb(235,229,229);
   }
-  
-  .publish {
-    margin: 10px 0;
-    height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .publish a {
-    line-height: 30px;
-    background-color: rgb(68,68,68);
-    color: #ccc;
-    padding: 10px 10px;
-    border-radius: 10px;
-  }
   .main {
     margin: auto auto;
     width: 80%;
-    background-color: rgb(245, 240, 240);
     height: calc(100vh - 160px);
-    padding: 20px;
   }
   .media {
-    height: 75px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px 15px;
     margin: 5px 0;
   }
   .media-left {
@@ -45,49 +30,33 @@
     margin-right: 10px;
   }
   .media-body {
-    height: 75px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+  }
+  .user {
+    color: #000;
+    font-weight: 700;
   }
 </style>
 {{/block}}
 {{block 'content'}}
 <div class="main">
   <ul class="container">
+    {{ each topics }}
     <li class="media">
       <div class="media-left">
         <a href="#">
-            <img width="40" height="40" class="media-object" src="/public/img/avatar-max-img.png" alt="...">
-          </a>
+          <img width="40" height="40" class="media-object" src="/public/img/avatar-max-img.png" alt="...">
+        </a>
       </div>
       <div class="media-body">
-        <h4 class="media-heading"><a href="/topics/123">Topic Information</a></h4>
-        <p>masy 回复了问题 • 2 人关注 • 1 个回复 • 187 次浏览 • 2020-11-17 10:54</p>
+        <p><span class="user">{{ $value.nickname }}</span>  发表了话题：<a href="/topics/123"> {{ $value.topic }} </a></p>
+        <p>内容： {{ $value.content }}</p>
+        <p>• 2 人关注 • 1 个回复 • 187 次浏览 • 2020-11-17 10:54</p>
       </div>
     </li>
-    <li class="media">
-      <div class="media-left">
-        <a href="#">
-            <img width="40" height="40" class="media-object" src="/public/img/avatar-max-img.png" alt="...">
-          </a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading"><a href="/topics/123">Topic Information</a></h4>
-        <p>masy 回复了问题 • 2 人关注 • 1 个回复 • 187 次浏览 • 2020-11-17 10:54</p>
-      </div>
-    </li>
-    <li class="media">
-      <div class="media-left">
-        <a href="#">
-            <img width="40" height="40" class="media-object" src="/public/img/avatar-max-img.png" alt="...">
-          </a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading"><a href="/topics/123">Topic Information</a></h4>
-        <p>masy 回复了问题 • 2 人关注 • 1 个回复 • 187 次浏览 • 2020-11-17 10:54</p>
-      </div>
-    </li>
+    {{/each}}
   </ul>
 </div>
 {{/block}}
