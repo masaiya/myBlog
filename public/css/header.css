@@ -13,9 +13,7 @@ header {
   padding: 0;
 }
 .navbar-left {
-  display:flex; 
-  justify-content: space-between;
-  align-items: center;
+  height: 50px;
 }
 .search {
   border-radius: 20px;

@@ -5,6 +5,7 @@
   html, body {
     margin: 0;
     padding: 0;
+    min-width: 1040px;
   }
   html {
     height: 100%;
@@ -99,12 +100,14 @@
   $('#edit_form').on('submit', function(e) {
     e.preventDefault();
     let formData = $(this).serialize();
+    console.log(formData);
     $.ajax({
       type: 'POST',
       url: '/editUserInfo',
       dataType: 'json',
       data: formData,
       success: function(data) {
+        console.log(data);
         if(data.err_code === 0) {
           window.alert('编辑成功！')
           window.location.href = '/userInfo'

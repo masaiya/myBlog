@@ -116,7 +116,7 @@ router.post('/publish', async function(req, res, next) {
   }
 })
 
-router.get('/userInfo', async function(req, res, next) {
+router.get('/userInfo', function(req, res, next) {
   if(req.session.user) {
     res.render('userInfo.html', {
       user: req.session.user
@@ -126,4 +126,32 @@ router.get('/userInfo', async function(req, res, next) {
   }
 })
 
+router.get('/editUserInfo', function(req, res, next) {
+  if(req.session.user) {
+    res.render('editUserInfo.html', {
+      user: req.session.user
+    })
+  } else {
+    res.redirect('/login');
+  }
+})
+
+router.post('/editUserInfo', async function(req, res, next) {
+  try {
+    var body = req.body;
+    var user = req.session.user;
+    user.nickname = body.nickname;
+    user.bio = body.bio;
+    user.gender = body.gender;
+    await User.findOneAndUpdate({
+      email: user.email
+    }, user);
+    return res.status(200).json({
+      err_code: 0,
+      message: 'OK'
+    })
+  } catch(err) {
+    next(err);
+  }
+})
 module.exports = router;

@@ -4,6 +4,7 @@
   html, body {
     margin: 0;
     padding: 0;
+    min-width: 1040px;
   }
   html {
     height: 100%;
@@ -15,7 +16,12 @@
     background-color: rgb(235,229,229);
   }
   .main {
+    height: calc(100vh - 160px);
+    overflow: auto;
     margin: auto auto;
+    width: 100%;
+  }
+  .container {
     width: 80%;
     height: calc(100vh - 160px);
   }
