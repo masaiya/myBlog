@@ -1,8 +1,10 @@
-// 用户登录注册页面
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost/test');
+"use strict";
 
+// 用户登录注册页面
+var mongoose = require('mongoose');
+
+var Schema = mongoose.Schema;
+mongoose.connect('mongodb://localhost/test');
 var topicSchema = new Schema({
   topic: {
     type: String,
@@ -20,6 +22,5 @@ var topicSchema = new Schema({
     type: String,
     required: true
   }
-})
-
+});
 module.exports = mongoose.model('Topic', topicSchema);

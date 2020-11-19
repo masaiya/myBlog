@@ -1,0 +1,144 @@
+{{extend './layout.html'}}
+{{block 'head'}}
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background-color: rgb(235,229,229);
+  }
+  main {
+    background-color: #fff;
+    margin: auto auto;
+    border-radius: 10px;
+    width: 80%;
+    height: calc(100vh - 210px);
+    padding: 10px 15px;
+    color: #333;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 30px 0;
+  }
+  .detail {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .basicInfo {
+    height: 80px;
+    margin: 10px 0 15px 0;
+  }
+  .avatar {
+    float: left;
+    height: 80px;
+    margin-right: 10px;
+  }
+  .nickname {
+    float: left;
+  }
+  .nickname p {
+    margin: 8px 0 8px 0;
+  }
+  .notImp {
+    color: rgb(112, 107, 107);
+    margin-right: 30px;
+  }
+  .subBtn {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 200px;
+  }
+</style>
+{{/block}}
+
+{{block 'content'}}
+<main>
+  <div class="container">
+    <h2 class="header"><span>个人资料</span></h2>
+    <div class="detail">
+      <div class="basicInfo">
+        <img class="avatar" src="{{ user.avatar }}" alt="">
+        <div class="nickname">
+          <p>{{ user.nickname }}</p>
+          <p class="notImp">{{ user.bio }}</p>
+          <!-- <p>{{ user.bio }}</p> -->
+        </div>
+      </div>
+      <hr>
+      <p class="listInfo"><span class="notImp">邮箱</span>{{ user.email }}</p>
+      <p class="listInfo"><span class="notImp">性别</span>{{ user.gender }}</p>
+      <p class="listInfo"><span class="notImp">职业</span>---</p>
+      <p class="listInfo"><span class="notImp">公司</span>---</p>
+      <p class="listInfo"><span class="notImp">电话</span>---</p>
+      <div class="input-group subBtn">
+        <a class="btn btn-success" role="button" href="/editUserInfo">编辑资料</a>
+        <a class="btn btn-info" role="button" href="/">首页</a>
+      </div>
+    </div>
+    
+
+    <!-- <form id="userInfo_form">
+      <div class="item">
+        <label for="">昵称</label>
+        <input type="text" name="nickname" >
+      </div>
+      <div class="item">
+        <label for="">性别</label>
+        <input type="text" name="gender">
+      </div>
+      <div>
+        <button class="btn btn-primary">确定修改</button>
+        <a href="/" class="btn btn-danger">取消</a>
+      </div>
+    </form> -->
+  </div>
+</main>
+{{/block}}
+
+
+{{block 'script'}}
+<script>
+    // $(function () {
+    //     $('.userInfo').on('click', function () {
+    //         $('.userCount').toggle()
+    //     })
+    //     if ($('input[name=gender]').val() === '-1') {
+    //         $(this).val("默认")
+    //         console.log('change')
+    //     }
+    //     $('#userInfo_form').on('submit', function (e) {
+    //         e.preventDefault()
+    //         let formData = $(this).serialize()
+    //         // console.log(formData)
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '/userInfo',
+    //             dataType: 'json',
+    //             data: formData,
+    //             success: function (data) {
+    //                 // console.log(data)
+    //                 if (data.code === 0) {
+    //                     window.alert('更改成功，即将跳转')
+    //                     window.location.href = '/'
+    //                 } else {
+    //                     window.alert('更改失败，请稍后再试')
+    //                 }
+    //             }
+    //         })
+    //     })
+    // })
+</script>
+
+{{/block}}

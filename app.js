@@ -40,7 +40,7 @@ app.use(function(req, res) {
 // 当在别的中间件出现错误时，调用 next(err) 将直接往后找到带有四个参数的应用程序级别的中间件
 // 配置一个全局错误处理中间件
 app.use(function(err, req, res, next) {
-  res.status(500).join({
+  res.status(500).json({
     err_code: 500,
     message: err.message
   })

@@ -73,3 +73,8 @@ header {
   color: #fff;
   text-decoration: underline;
 }
+.userName {
+  color: #ccc;
+  font-size: 14px;
+  padding-right: 10px;
+}

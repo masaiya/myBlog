@@ -31,8 +31,7 @@
 {{block 'content'}}
 
 <main>
-  
-  <form>
+  <form id="publish_form"> 
     <div class="form-group">
       <label for="exampleInputEmail1">话题</label>
       <input type="text" class="form-control" placeholder="输入话题..." name="topic"> 
@@ -52,30 +51,25 @@
 
 {{block 'script'}}
 <script>
-    $(function () {
-        $('.userInfo').on('click', function () {
-            $('.userCount').toggle()
-        })
-        $('#publish_form').on('submit', function (e) {
-            e.preventDefault()
-            let formData = $(this).serialize()
-            formData += `&nickname=${$('.userInfo').text().replace(/\s+/g, '')}`
-            $.ajax({
-                type: 'POST',
-                url: '/publish',
-                data: formData,
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data)
-                    if (data.code === 0) {
-                        window.alert('发布成功,即将跳转')
-                        window.location.href = '/'
-                    } else {
-                        window.alert('发送失败，请重试')
-                    }
-                }
-            })
-        })
+  $('#publish_form').on('submit', function(e) {
+    e.preventDefault();
+    let formData = $(this).serialize();
+    console.log("formData:::");
+    console.log(formData);
+    $.ajax({
+      type: 'post',
+      url: '/publish',
+      data: formData,
+      dataType: 'json',
+      success: function(data) {
+        if(data.err_code === 0) {
+          window.alert('发布成功,即将跳转');
+          window.location.href = '/';
+        } else {
+          window.alert('发送失败，请重试');
+        }
+      }
     })
+  })
 </script>
 {{/block}}

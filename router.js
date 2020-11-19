@@ -1,6 +1,8 @@
 var express = require('express')
 var User = require('./models/user')
+var Topic = require('./models/topic')
 var md5 = require('blueimp-md5')
+const { ready } = require('jquery')
 
 var router = express.Router()
 
@@ -83,7 +85,29 @@ router.get('/logout', function (req, res) {
 })
 
 router.get('/publish', function(req, res, next) {
-  res.render('publish.html')
+  res.render('publish.html', {
+    user: req.session.user
+  })
+})
+
+router.post('/publish', async function(req, res, next) {
+  // 获取表单数据
+  var body = req.body;
+  if(req.session.user) {
+    body.nickname = req.session.user.nickname;
+    body.email = req.session.user.email;
+    try {
+      await new Topic(body).save();
+      return res.status(200).json({
+        err_code: 0,
+        message: 'OK'
+      })
+    } catch(err) {
+      next(err);
+    }
+  } else {
+    res.redirect('/login');
+  }
 })
 
 module.exports = router;
