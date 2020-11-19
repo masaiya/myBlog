@@ -9,8 +9,6 @@ var router = express.Router()
 router.get('/', async function (req, res, next) {
   try {
     var topics = await Topic.find();
-    console.log("topics:::");
-    console.log(topics);
     res.render('index.html', {
       user: req.session.user,
       topics: topics
@@ -113,6 +111,16 @@ router.post('/publish', async function(req, res, next) {
     } catch(err) {
       next(err);
     }
+  } else {
+    res.redirect('/login');
+  }
+})
+
+router.get('/userInfo', async function(req, res, next) {
+  if(req.session.user) {
+    res.render('userInfo.html', {
+      user: req.session.user
+    })
   } else {
     res.redirect('/login');
   }
